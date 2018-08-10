@@ -1,6 +1,7 @@
 (ns cljss.sheet
   (:require [goog.object :as gobj]
             [goog.dom :as dom]
+            [clojure.string :as str]
             [cljss.utils :refer [dev?]]))
 
 (def ^:private limit 65534)
@@ -27,6 +28,7 @@
     (when-not (@cache cls-name)
       (swap! cache conj cls-name)
       (let [rule (if (ifn? rule) (rule) rule)
+            rule (str/replace rule #";|\s!important;" " !important;")
             rules-count (gobj/get (gobj/get sheet "cssRules") "length")]
         (if dev?
           (dom/appendChild tag (dom/createTextNode rule))
