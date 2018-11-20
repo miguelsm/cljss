@@ -8,7 +8,7 @@
 
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.339"]
-                 [sablono "0.8.1"]]
+                 [sablono "0.8.3"]]
 
   :test-paths ["test/clj"]
 
